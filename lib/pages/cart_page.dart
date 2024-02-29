@@ -11,7 +11,7 @@ class CartPage extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              color: Colors.red,
+             child: _productList(context),
             ),
           ),
           Container(
@@ -85,6 +85,7 @@ class CartPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 20.0, left: 10.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Titulo do produto'),
                 Text(
