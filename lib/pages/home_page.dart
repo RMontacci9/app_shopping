@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopping/pages/product_page.dart';
+import 'package:shopping/widgets/category/category_list_widget.dart';
+import 'package:shopping/widgets/product/product_list_widget.dart';
 import 'package:shopping/widgets/search_box_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,27 +12,26 @@ class HomePage extends StatelessWidget {
       body: Container(
         width: double.infinity,
         padding: EdgeInsets.all(15),
-        color: Color(0xFFF5F5F5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(
               height: 60,
             ),
-           SearchBox(),
+            SearchBox(),
             const SizedBox(
               height: 30,
             ),
             Text(
               'Categories',
-              style: TextStyle(fontSize: 30),
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(
               height: 10,
             ),
             Container(
               height: 90,
-              child: _categoryList(),
+              child: CategoryListWidget(),
             ),
             const SizedBox(
               height: 30,
@@ -41,9 +41,12 @@ class HomePage extends StatelessWidget {
               children: [
                 Text(
                   'Best Selling',
-                  style: TextStyle(fontSize: 30),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
-                TextButton(onPressed: () {}, child: Text('See all'))
+                TextButton(
+                  onPressed: () {},
+                  child: Text('See all'),
+                )
               ],
             ),
             const SizedBox(
@@ -51,113 +54,12 @@ class HomePage extends StatelessWidget {
             ),
             Container(
               height: 350,
-              child: _productList(context),
+              child: ProductListWidget(
+                scrollDirection: Axis.horizontal,
+              ),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _search() {
-    return Container(
-
-    );
-  }
-
-  Widget _categoryList() {
-    return Container(
-      width: 70,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          _categoryItem(),
-          _categoryItem(),
-          _categoryItem(),
-          _categoryItem(),
-          _categoryItem(),
-        ],
-      ),
-    );
-  }
-
-  Widget _categoryItem() {
-    return Container(
-      width: 70,
-      height: 70,
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-              color: Colors.black12,
-              offset: new Offset(1, 1),
-              blurRadius: 5,
-              spreadRadius: 2),
-        ],
-        borderRadius: BorderRadius.all(
-          Radius.circular(64),
-        ),
-      ),
-      child: Image.asset('assets/images/Icon_Devices.png'),
-    );
-  }
-
-  Widget _productList(context) {
-    return Container(
-      width: 70,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          _productItem(context),
-          _productItem(context),
-          _productItem(context),
-          _productItem(context),
-          _productItem(context),
-
-        ],
-      ),
-    );
-  }
-
-  Widget _productItem(context) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.all(5),
-      width: 170,
-      color: Colors.black12,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          GestureDetector( // widget responsável pela detecção de gestos na tela
-            onTap: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ProductPage(),
-                ),
-              );
-            },
-            child: Image.asset(
-              'assets/images/product-1.png',
-              width: 170,
-              height: 170,
-              fit: BoxFit.cover,
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            height: 60,
-            child: Text('Titulo do produto', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),),
-          ),
-          const SizedBox(height: 5,),
-          Text('Marca do produto', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),),
-          const SizedBox(height: 5,),
-          Text('\$ 200', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF00C569)),),
-        ],
       ),
     );
   }

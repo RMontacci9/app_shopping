@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping/pages/tabs_page.dart';
+import 'package:shopping/themes/dark_theme.dart';
+import 'package:shopping/themes/light_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,9 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: lightTheme(),
       home: DefaultTabController(
         length: 3,
         child: TabsPage(),

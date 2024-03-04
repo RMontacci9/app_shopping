@@ -11,7 +11,7 @@ class CartPage extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-             child: _productList(context),
+              child: _productList(context),
             ),
           ),
           Container(
@@ -26,8 +26,16 @@ class CartPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('TOTAL'),
-                      const SizedBox(height: 5,),
-                      Text('\$4250', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 20),)
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        '\$4250',
+                        style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      )
                     ],
                   ),
                 ),
@@ -35,13 +43,20 @@ class CartPage extends StatelessWidget {
                   height: 50,
                   width: 150,
                   decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.all(Radius.circular(5),),
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5),
+                    ),
                   ),
                   margin: EdgeInsets.only(right: 20),
                   child: TextButton(
-                    onPressed: (){},
-                    child: Text('Checkout', style: TextStyle(color: Colors.white, ),),
+                    onPressed: () {},
+                    child: Text(
+                      'Checkout',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                    ),
                   ),
                 )
               ],
@@ -55,20 +70,20 @@ class CartPage extends StatelessWidget {
   Widget _productList(context) {
     return ListView(
       children: [
-        _productItem(),
-        _productItem(),
-        _productItem(),
-        _productItem(),
-        _productItem(),
+        _productItem(context),
+        _productItem(context),
+        _productItem(context),
+        _productItem(context),
+        _productItem(context),
       ],
     );
   }
 
-  Widget teste(){
+  Widget teste() {
     return Container();
   }
 
-  Widget _productItem() {
+  Widget _productItem(context) {
     return Container(
       height: 120,
       margin: EdgeInsets.all(5),
@@ -90,7 +105,7 @@ class CartPage extends StatelessWidget {
                 Text('Titulo do produto'),
                 Text(
                   '\$200',
-                  style: TextStyle(color: Colors.blue),
+                  style: TextStyle(color: Theme.of(context).primaryColor,),
                 ),
                 const SizedBox(
                   height: 10,
