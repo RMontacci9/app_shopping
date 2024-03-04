@@ -13,7 +13,6 @@ class LoginPage extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Container(
           padding: EdgeInsets.fromLTRB(20, 80, 20, 40),
-          color: const Color(0xFFF5F5F5),
           //os primeiros 0xFFF definem a opacidade da cor, o resto é o hexadecimal
           child: Column(
             //apenas listviews tem comportamento de rolagem, rows, columns e containers não possuem.
@@ -21,7 +20,7 @@ class LoginPage extends StatelessWidget {
               Container(
                 height: 450,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.secondary,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black12,
@@ -44,8 +43,7 @@ class LoginPage extends StatelessWidget {
                         children: [
                           Text(
                             'Welcome',
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.w500),
+                            style: Theme.of(context).textTheme.displaySmall,
                           ),
                           TextButton(
                             onPressed: () {
@@ -56,12 +54,19 @@ class LoginPage extends StatelessWidget {
                                 ),
                               );
                             },
-                            child: Text('Sign up'),
+                            child: Text(
+                              'Sign up',
+                              style: TextStyle(
+                                  color: Theme.of(context).primaryColor),
+                            ),
                           ),
                           // o FlatButton foi substituido pelo TextButton
                         ],
                       ),
-                      Text('Sign in to continue'),
+                      Text(
+                        'Sign in to continue',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
                       const SizedBox(
                         height: 60,
                       ),
@@ -72,7 +77,7 @@ class LoginPage extends StatelessWidget {
                         decoration: InputDecoration(
                             labelText: 'Email',
                             labelStyle: TextStyle(
-                                color: Colors.black,
+                                color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 16)),
                         style: TextStyle(fontSize: 20),
@@ -89,7 +94,7 @@ class LoginPage extends StatelessWidget {
                         decoration: InputDecoration(
                             labelText: 'Password',
                             labelStyle: TextStyle(
-                                color: Colors.black,
+                                color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 16)),
                         style: TextStyle(fontSize: 20),
@@ -100,23 +105,26 @@ class LoginPage extends StatelessWidget {
                           onPressed: () {},
                           child: Text(
                             'Forgot your password?',
+                            style: TextStyle(
+                                color: Theme.of(context).primaryColor),
                           ),
                         ),
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomePage(),
-                            ),
-                          );
+                          // Seu código onPressed aqui
                         },
                         child: Text(
                           'Sign in',
                           style: TextStyle(color: Colors.white),
                         ),
                         style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.resolveWith<Color?>(
+                            (Set<MaterialState> states) {
+                              return Theme.of(context).primaryColor;
+                            },
+                          ),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
@@ -137,16 +145,24 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2.0,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(5),
+                  ),
+                ),
                 height: 50,
-                child: ElevatedButton(
+                child: TextButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                       elevation: 1,
-                      backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      foregroundColor: Colors.blue),
+                      foregroundColor: Theme.of(context).primaryColor),
                   child: Row(
                     children: [
                       SizedBox(
@@ -158,9 +174,9 @@ class LoginPage extends StatelessWidget {
                           // o tamanho da imagem é obtido atraves do tamanho do container em que ele está contido
                         ),
                       ),
-                      Text(
-                        'Sign in with Facebook',
-                      ),
+                      Text('Sign in with Facebook',
+                          style:
+                              TextStyle(color: Theme.of(context).primaryColor)),
                     ],
                   ),
                 ),
@@ -169,16 +185,24 @@ class LoginPage extends StatelessWidget {
                 height: 20,
               ),
               Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2.0,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(5),
+                  ),
+                ),
                 height: 50,
-                child: ElevatedButton(
+                child: TextButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                       elevation: 1,
-                      backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      foregroundColor: Colors.blue),
+                      foregroundColor: Theme.of(context).primaryColor),
                   child: Row(
                     children: [
                       SizedBox(
@@ -190,9 +214,9 @@ class LoginPage extends StatelessWidget {
                           // o tamanho da imagem é obtido atraves do tamanho do container em que ele está contido
                         ),
                       ),
-                      Text(
-                        'Sign in with Google',
-                      ),
+                      Text('Sign in with Google',
+                          style:
+                              TextStyle(color: Theme.of(context).primaryColor)),
                     ],
                   ),
                 ),

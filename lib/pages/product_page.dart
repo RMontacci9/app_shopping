@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatelessWidget {
-  const ProductPage({super.key});
+  const ProductPage({super.key, required this.image, required this.title, required this.description, required this.price});
+  final String image;
+  final String title;
+  final String description;
+  final double price;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,7 @@ class ProductPage extends StatelessWidget {
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
-                background: Image.asset('assets/images/product-10.png'),
+                background: Image.asset(image),
               ), //faz o efeito sanfona que queremos
             ),
           ];
@@ -27,13 +31,13 @@ class ProductPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 10, left: 10, right: 10),
               child: Text(
-                'Dry fit Long Sleeve',
+                title,
                 style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
               ),
             ),
             Padding(
               padding: EdgeInsets.all(10),
-              child: Text('by Nike'),
+              child: Text(description),
             ),
             Padding(
               padding: EdgeInsets.all(10),

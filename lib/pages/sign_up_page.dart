@@ -40,8 +40,7 @@ class SignUpPage extends StatelessWidget {
                     children: [
                       Text(
                         'Sign Up',
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.w500),
+                        style: Theme.of(context).textTheme.displaySmall,
                       ),
                       const SizedBox(
                         height: 60,
@@ -53,7 +52,7 @@ class SignUpPage extends StatelessWidget {
                         decoration: InputDecoration(
                             labelText: 'Name',
                             labelStyle: TextStyle(
-                                color: Colors.black,
+                                color:  Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 16)),
                         style: TextStyle(fontSize: 20),
@@ -68,7 +67,7 @@ class SignUpPage extends StatelessWidget {
                         decoration: InputDecoration(
                             labelText: 'Email',
                             labelStyle: TextStyle(
-                                color: Colors.black,
+                                color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 16)),
                         style: TextStyle(fontSize: 20),
@@ -85,7 +84,7 @@ class SignUpPage extends StatelessWidget {
                         decoration: InputDecoration(
                             labelText: 'Password',
                             labelStyle: TextStyle(
-                                color: Colors.black,
+                                color:  Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 16)),
                         style: TextStyle(fontSize: 20),
@@ -105,6 +104,11 @@ class SignUpPage extends StatelessWidget {
                             style: TextStyle(color: Colors.white),
                           ),
                           style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                                  (Set<MaterialState> states) {
+                                return Theme.of(context).primaryColor;
+                              },
+                            ),
                             shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
